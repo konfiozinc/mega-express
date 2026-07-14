@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-950 select-none">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#1e40af"/>
+    <title>Mega Express - Tarjeta Digital Profesional</title>
+    
+    <!-- Tailwind CSS & Iconografía Oficial -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { opacity: 0; animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes subtlePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); box-shadow: 0 10px 25px rgba(30,64,175,0.4); } }
+        .pulse-cta { animation: subtlePulse 2s infinite ease-in-out; }
+        #splash { position: fixed; inset: 0; background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); z-index: 100; display: flex; flex-direction: column; items-center: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); z-index: 50; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content { background: #ffffff; border-radius: 28px; width: 100%; max-w: 326px; transform: scale(0.96); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); border: 1px solid rgba(255,255,255,0.1); }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .app-container { height: 100vh; height: 100dvh; }
+    </style>
+</head>
+<body class="bg-slate-950 w-full flex justify-center items-center overflow-hidden">
+
+    <!-- 1. SPLASH SCREEN (Módulo Obligatorio 1) -->
+    <div id="splash" class="flex flex-col items-center justify-center">
+        <div class="text-center animate-pulse">
+            <div class="w-20 h-20 mx-auto bg-yellow-400 rounded-full flex items-center justify-center shadow-lg border-4 border-white mb-3">
+                <i class="fas fa-wifi text-3xl text-blue-900"></i>
+            </div>
+            <h1 class="text-2xl font-black text-white tracking-wider">MEGA EXPRESS</h1>
+            <p class="text-yellow-300 text-[10px] font-bold uppercase tracking-widest mt-1">Conectividad Total</p>
+        </div>
+    </div>
+
+    <!-- APP CONTAINER (ALTO DE PANTALLA FIJO - ANTIPATRÓN SCROLL EVITADO) -->
+    <div class="app-container w-full max-w-[380px] bg-slate-900 relative flex flex-col justify-between overflow-hidden shadow-2xl">
+        
+        <!-- CUERPO DE LA APP -->
+        <div class="flex-grow flex flex-col justify-between pb-24 overflow-y-auto">
+            
+            <!-- 2. PORTADA & HERO -->
+            <header class="relative bg-gradient-to-b from-blue-800 to-blue-950 pt-8 pb-12 px-5 text-center text-white rounded-b-[40px] shadow-lg flex-shrink-0 border-b border-blue-700/30">
+                <div class="absolute top-4 right-4 bg-yellow-400 text-blue-950 font-black px-2.5 py-1 rounded-full text-[9px] uppercase tracking-wider shadow-sm">
+                    Fibra Óptica
+                </div>
+                
+                <!-- Logo Corporativo Curado -->
+                <div class="w-20 h-20 mx-auto bg-white rounded-full flex flex-col items-center justify-center shadow-md border-4 border-yellow-400 p-1 fade-in-up" style="animation-delay: 400ms;">
+                    <i class="fas fa-wifi text-3xl text-blue-800"></i>
+                    <span class="font-black text-[8px] text-blue-950 tracking-tighter mt-0.5">MEGA EXPRESS</span>
+                </div>
+                
+                <h1 class="text-2xl font-black text-white mt-3 tracking-tight fade-in-up" style="animation-delay: 500ms;">Mega Express</h1>
+                <p class="text-blue-300 font-medium text-xs uppercase tracking-widest mt-1 fade-in-up" style="animation-delay: 600ms;">Internet Residencial</p>
+                
+                <!-- Bloque de Oferta Dominante -->
+                <div class="mt-4 bg-slate-900/60 rounded-2xl p-3 border border-blue-500/20 backdrop-blur-md max-w-[220px] mx-auto fade-in-up" style="animation-delay: 700ms;">
+                    <p class="text-[9px] uppercase text-yellow-400 tracking-widest font-bold">Mensualidad Fija</p>
+                    <p class="text-2xl font-black text-white mt-0.5">$50.000 <span class="text-xs font-bold text-blue-300">COP</span></p>
+                </div>
+            </header>
+
+            <!-- CONTENIDO DE CONVERSIÓN CENTRAL -->
+            <div class="px-5 space-y-4 flex-grow flex flex-col justify-center mt-2">
+                
+                <!-- 3. BOTONES RÁPIDOS / ACCIÓN PRIMARIA -->
+                <div class="fade-in-up" style="animation-delay: 800ms;">
+                    <a href="https://wa.me/573028589954?text=Hola%20Mega%20Express,%20quiero%20solicitar%20el%20servicio%20de%20Internet%20Fibra%20Óptica%20de%20$50.000" target="_blank" class="w-full flex items-center justify-center bg-blue-600 text-white font-black py-4 px-4 rounded-xl pulse-cta text-center text-xs uppercase tracking-wider transition-colors hover:bg-blue-700">
+                        <i class="fab fa-whatsapp text-lg mr-2"></i>¡Solicitar Instalación Ya!
+                    </a>
+                </div>
+
+                <!-- MINI GRID DE ATRIBUTOS COMERCIALES COMPACTOS -->
+                <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 900ms;">
+                    <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
+                        <div class="w-7 h-7 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-400 text-xs flex-shrink-0"><i class="fas fa-bolt"></i></div>
+                        <span class="text-[10px] font-bold text-slate-300 leading-tight">Velocidad Simétrica</span>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
+                        <div class="w-7 h-7 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-400 text-xs flex-shrink-0"><i class="fas fa-user-shield"></i></div>
+                        <span class="text-[10px] font-bold text-slate-300 leading-tight">Sin Estudio de Crédito</span>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
+                        <div class="w-7 h-7 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-400 text-xs flex-shrink-0"><i class="fas fa-user-check"></i></div>
+                        <span class="text-[10px] font-bold text-slate-300 leading-tight">Apto para Reportados</span>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
+                        <div class="w-7 h-7 bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-400 text-xs flex-shrink-0"><i class="fas fa-globe"></i></div>
+                        <span class="text-[10px] font-bold text-slate-300 leading-tight">Cualquier Nacionalidad</span>
+                    </div>
+                </div>
+
+                <!-- LLAMADAS DIRECTAS TELEFÓNICAS NATIVAS -->
+                <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 1000ms;">
+                    <a href="tel:+573028589954" class="bg-slate-800 border border-slate-700 py-3 px-3 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold text-slate-300 transition-colors hover:bg-slate-750">
+                        <i class="fas fa-phone text-blue-400"></i> Línea Ventas 1
+                    </a>
+                    <a href="tel:+573217490310" class="bg-slate-800 border border-slate-700 py-3 px-3 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold text-slate-300 transition-colors hover:bg-slate-750">
+                        <i class="fas fa-phone-alt text-blue-400"></i> Línea Ventas 2
+                    </a>
+                </div>
+            </div>
+            
+            <!-- ACCIÓN COMPLEMENTARIA MANDATORIA (Guardar Contacto) -->
+            <div class="px-5 mt-auto pt-4 fade-in-up" style="animation-delay: 1100ms;">
+                <button id="btn-vcard" class="w-full bg-slate-800 border border-slate-700 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                    <i class="fas fa-user-plus text-yellow-400"></i> Descargar Contacto a Agenda
+                </button>
+            </div>
+        </div>
+
+        <!-- 12. BARRA DE NAVEGACIÓN INFERIOR (ESTILO APP NATIVA FIJA) -->
+        <nav class="absolute bottom-0 inset-x-0 bg-slate-900 border-t border-slate-800 px-2 py-2.5 flex justify-around items-center z-20 shadow-2xl">
+            <button id="nav-services" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                <i class="fas fa-list-check text-base"></i>
+                <span class="text-[9px] font-semibold mt-1">Servicios</span>
+            </button>
+            <button id="nav-gallery" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                <i class="fas fa-images text-base"></i>
+                <span class="text-[9px] font-semibold mt-1">Evidencia</span>
+            </button>
+            <button id="nav-testimonials" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                <i class="fas fa-comment-dots text-base"></i>
+                <span class="text-[9px] font-semibold mt-1">Opiniones</span>
+            </button>
+            <button id="nav-coverage" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                <i class="fas fa-map-location-dot text-base"></i>
+                <span class="text-[9px] font-semibold mt-1">Zonas</span>
+            </button>
+            <button id="nav-qr" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                <i class="fas fa-qrcode text-base"></i>
+                <span class="text-[9px] font-semibold mt-1">QR</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ================= MODALES DEL DESIGN SYSTEM (ARQUITECTURA FIJA) ================= -->
+
+    <!-- 5. MODAL DE SERVICIOS -->
+    <div id="modal-services" class="modal-overlay">
+        <div class="modal-content overflow-hidden">
+            <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
+                <span><i class="fas fa-list-check mr-2"></i>Planes y Beneficios</span>
+                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
+            </div>
+            <div class="p-4 max-h-[60vh] overflow-y-auto space-y-3 text-slate-800">
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-blue-900 text-xs uppercase">Plan Único Fibra Óptica</h4>
+                    <p class="text-[11px] text-slate-600 mt-1 leading-normal">Internet ilimitado de alta fidelidad, ideal para conectar smartphones, Smart TVs, consolas y computadores en simultáneo sin pérdida de velocidad.</p>
+                    <p class="text-xs font-black text-blue-800 mt-2">$50.000 COP al mes</p>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <h4 class="font-bold text-blue-900 text-xs uppercase">Instalación Inmediata</h4>
+                    <p class="text-[11px] text-slate-600 mt-1 leading-normal">Agendamiento de cuadrilla técnica prioritaria. Sin revisiones ni firmas burocráticas complejas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6 y 7. MODAL DE GALERÍA Y VIDEOS -->
+    <div id="modal-gallery" class="modal-overlay">
+        <div class="modal-content overflow-hidden">
+            <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
+                <span><i class="fas fa-images mr-2"></i>Evidencia Técnica</span>
+                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
+            </div>
+            <div class="p-4 space-y-3">
+                <div class="rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=400" alt="Fibra Óptica" class="w-full h-32 object-cover">
+                    <p class="text-[10px] p-2 text-slate-600 text-center font-medium">Cableado e infraestructura de última generación para garantizar estabilidad.</p>
+                </div>
+                <div class="bg-slate-950 rounded-xl overflow-hidden h-28 relative flex items-center justify-center border shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=400" class="absolute inset-0 w-full h-full object-cover opacity-40" alt="Video">
+                    <a href="https://wa.me/573028589954?text=Hola,%20quiero%20ver%20un%20video%20demostrativo" target="_blank" class="z-10 w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center text-blue-900 text-xs shadow-md">
+                        <i class="fas fa-play ml-0.5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. MODAL DE TESTIMONIOS -->
+    <div id="modal-testimonials" class="modal-overlay">
+        <div class="modal-content overflow-hidden">
+            <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
+                <span><i class="fas fa-comment-dots mr-2"></i>Prueba Social</span>
+                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
+            </div>
+            <div class="p-4 space-y-3 text-slate-800">
+                <div class="bg-blue-50/50 p-3 rounded-xl border border-blue-100">
+                    <div class="text-yellow-500 text-[9px] mb-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[11px] text-slate-700 italic leading-relaxed">"Excelente internet. Estaba reportado en DataCrédito y no me pusieron ningún problema, me instalaron al día siguiente."</p>
+                    <p class="text-[9px] font-bold text-blue-900 text-right mt-1.5">— Carlos M., Usuario Conectado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9 y 10. MODAL DE COBERTURA E INFORMACIÓN -->
+    <div id="modal-coverage" class="modal-overlay">
+        <div class="modal-content overflow-hidden">
+            <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
+                <span><i class="fas fa-map-location-dot mr-2"></i>Zonas e Información</span>
+                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
+            </div>
+            <div class="p-4 space-y-3 text-slate-800 text-[11px]">
+                <div class="p-3 bg-slate-50 rounded-xl border flex items-start gap-2.5">
+                    <i class="fas fa-map-pin text-blue-700 text-sm mt-0.5"></i>
+                    <div>
+                        <h5 class="font-bold text-slate-800">Disponibilidad Residencial</h5>
+                        <p class="text-[10px] text-slate-500 mt-0.5">Escríbenos directamente para validar la factibilidad en tu dirección exacta.</p>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-xl border space-y-1.5 font-medium">
+                    <div class="flex justify-between border-b pb-1"><span>Mensualidad:</span><span class="font-bold text-slate-900">$50.000 COP</span></div>
+                    <div class="flex justify-between border-b pb-1"><span>Atención:</span><span class="text-slate-900">Lunes a Sábado</span></div>
+                    <div class="flex justify-between"><span>Papeleo:</span><span class="text-slate-900">Sin estudio de crédito</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. MODAL DE CÓDIGO QR -->
+    <div id="modal-qr" class="modal-overlay">
+        <div class="modal-content overflow-hidden">
+            <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
+                <span><i class="fas fa-qrcode mr-2"></i>Compartir Perfil</span>
+                <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
+            </div>
+            <div class="p-5 text-center">
+                <div id="qrcode" class="flex justify-center p-2.5 bg-white border border-slate-200 rounded-xl inline-block mx-auto shadow-sm"></div>
+                <p class="text-[10px] text-slate-500 mt-3 px-1 leading-normal">Escanea este código desde otro celular para abrir al instante el enlace de presentación oficial de Mega Express.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Desvanecimiento controlado de la Splash Screen
+            setTimeout(() => {
+                const splash = document.getElementById('splash');
+                if(splash) {
+                    splash.style.opacity = '0';
+                    setTimeout(() => splash.style.display = 'none', 400);
+                }
+            }, 1000);
+
+            // Controlador de Modales del Framework V2.0
+            const setupAppModal = (triggerId, modalId) => {
+                const trigger = document.getElementById(triggerId);
+                const modal = document.getElementById(modalId);
+                if (!trigger || !modal) return;
+                
+                trigger.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('active'); });
+                modal.querySelector('.close-modal').addEventListener('click', () => modal.classList.remove('active'));
+                modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
+            };
+
+            // URL Oficial Obligatoria Normada por el Gobierno de Marca (2026)
+            const urlOficial = "https://konfiozinc.github.io/tarjetapre/";
+
+            // Inicializar disparadores de navegación táctil
+            setupAppModal('nav-services', 'modal-services');
+            setupAppModal('nav-gallery', 'modal-gallery');
+            setupAppModal('nav-testimonials', 'modal-testimonials');
+            setupAppModal('nav-coverage', 'modal-coverage');
+            setupAppModal('nav-qr', 'modal-qr');
+
+            // Generador de QR dinámico asociado a la URL maestra
+            const qrBox = document.getElementById("qrcode");
+            if(qrBox) {
+                new QRCode(qrBox, {
+                    text: urlOficial,
+                    width: 144,
+                    height: 144,
+                    colorDark : "#1e3a8a",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            }
+
+            // Descarga automatizada de vCard nativa para Smartphones
+            const btnVcard = document.getElementById('btn-vcard');
+            if (btnVcard) {
+                btnVcard.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mega Express Internet\nORG:Mega Express Fibra Optica\nTEL;TYPE=CELL,VOICE;PREF=1:+573028589954\nTEL;TYPE=CELL,VOICE:+573217490310\nNOTE:Fibra Optica por $50.000 COP mensual. Aprobado para reportados y todas las nacionalidades sin estudio de credito.\nURL:${urlOficial}\nEND:VCARD`;
+                    const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'Mega_Express.vcf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
