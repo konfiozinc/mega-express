@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#1e40af"/>
     <title>Mega Express - Tarjeta Digital Profesional</title>
     
-    <!-- Tailwind CSS & Iconografía Oficial -->
+    <!-- CSS y Fuentes de Alta Fidelidad -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
         .fade-in-up { opacity: 0; animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes subtlePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); box-shadow: 0 10px 25px rgba(30,64,175,0.4); } }
         .pulse-cta { animation: subtlePulse 2s infinite ease-in-out; }
-        #splash { position: fixed; inset: 0; background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); z-index: 100; display: flex; flex-direction: column; items-center: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        #splash { position: fixed; inset: 0; background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
         .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); z-index: 50; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-content { background: #ffffff; border-radius: 28px; width: 100%; max-w: 326px; transform: scale(0.96); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); border: 1px solid rgba(255,255,255,0.1); }
@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <!-- APP CONTAINER (ALTO DE PANTALLA FIJO - ANTIPATRÓN SCROLL EVITADO) -->
+    <!-- APP CONTAINER FIJO (ALTO DE PANTALLA EXCLUSIVO - ARQUITECTURA V2.0) -->
     <div class="app-container w-full max-w-[380px] bg-slate-900 relative flex flex-col justify-between overflow-hidden shadow-2xl">
         
         <!-- CUERPO DE LA APP -->
@@ -53,7 +53,7 @@
                     Fibra Óptica
                 </div>
                 
-                <!-- Logo Corporativo Curado -->
+                <!-- Logo Corporativo Oficial -->
                 <div class="w-20 h-20 mx-auto bg-white rounded-full flex flex-col items-center justify-center shadow-md border-4 border-yellow-400 p-1 fade-in-up" style="animation-delay: 400ms;">
                     <i class="fas fa-wifi text-3xl text-blue-800"></i>
                     <span class="font-black text-[8px] text-blue-950 tracking-tighter mt-0.5">MEGA EXPRESS</span>
@@ -62,7 +62,7 @@
                 <h1 class="text-2xl font-black text-white mt-3 tracking-tight fade-in-up" style="animation-delay: 500ms;">Mega Express</h1>
                 <p class="text-blue-300 font-medium text-xs uppercase tracking-widest mt-1 fade-in-up" style="animation-delay: 600ms;">Internet Residencial</p>
                 
-                <!-- Bloque de Oferta Dominante -->
+                <!-- Bloque de Oferta Principal -->
                 <div class="mt-4 bg-slate-900/60 rounded-2xl p-3 border border-blue-500/20 backdrop-blur-md max-w-[220px] mx-auto fade-in-up" style="animation-delay: 700ms;">
                     <p class="text-[9px] uppercase text-yellow-400 tracking-widest font-bold">Mensualidad Fija</p>
                     <p class="text-2xl font-black text-white mt-0.5">$50.000 <span class="text-xs font-bold text-blue-300">COP</span></p>
@@ -79,7 +79,7 @@
                     </a>
                 </div>
 
-                <!-- MINI GRID DE ATRIBUTOS COMERCIALES COMPACTOS -->
+                <!-- ATRIBUTOS COMERCIALES COMPACTOS -->
                 <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 900ms;">
                     <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
                         <div class="w-7 h-7 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-400 text-xs flex-shrink-0"><i class="fas fa-bolt"></i></div>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
 
-                <!-- LLAMADAS DIRECTAS TELEFÓNICAS NATIVAS -->
+                <!-- ENLACES TELEFÓNICOS NATIVOS -->
                 <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 1000ms;">
                     <a href="tel:+573028589954" class="bg-slate-800 border border-slate-700 py-3 px-3 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold text-slate-300 transition-colors hover:bg-slate-750">
                         <i class="fas fa-phone text-blue-400"></i> Línea Ventas 1
@@ -110,7 +110,7 @@
                 </div>
             </div>
             
-            <!-- ACCIÓN COMPLEMENTARIA MANDATORIA (Guardar Contacto) -->
+            <!-- ACCIÓN DE GUARDADO DE CONTACTO -->
             <div class="px-5 mt-auto pt-4 fade-in-up" style="animation-delay: 1100ms;">
                 <button id="btn-vcard" class="w-full bg-slate-800 border border-slate-700 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
                     <i class="fas fa-user-plus text-yellow-400"></i> Descargar Contacto a Agenda
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <!-- 12. BARRA DE NAVEGACIÓN INFERIOR (ESTILO APP NATIVA FIJA) -->
+        <!-- 12. BARRA DE NAVEGACIÓN INFERIOR (TAB BAR FIJO) -->
         <nav class="absolute bottom-0 inset-x-0 bg-slate-900 border-t border-slate-800 px-2 py-2.5 flex justify-around items-center z-20 shadow-2xl">
             <button id="nav-services" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
                 <i class="fas fa-list-check text-base"></i>
@@ -143,7 +143,7 @@
         </nav>
     </div>
 
-    <!-- ================= MODALES DEL DESIGN SYSTEM (ARQUITECTURA FIJA) ================= -->
+    <!-- ================= MODALES DEL DESIGN SYSTEM ================= -->
 
     <!-- 5. MODAL DE SERVICIOS -->
     <div id="modal-services" class="modal-overlay">
@@ -229,23 +229,23 @@
         </div>
     </div>
 
-    <!-- 11. MODAL DE CÓDIGO QR -->
+    <!-- 11. MODAL DE CÓDIGO QR REAL -->
     <div id="modal-qr" class="modal-overlay">
         <div class="modal-content overflow-hidden">
             <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
-                <span><i class="fas fa-qrcode mr-2"></i>Compartir Perfil</span>
+                <span><i class="fas fa-qrcode mr-2"></i>Compartir Tarjeta</span>
                 <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
             </div>
             <div class="p-5 text-center">
                 <div id="qrcode" class="flex justify-center p-2.5 bg-white border border-slate-200 rounded-xl inline-block mx-auto shadow-sm"></div>
-                <p class="text-[10px] text-slate-500 mt-3 px-1 leading-normal">Escanea este código desde otro celular para abrir al instante el enlace de presentación oficial de Mega Express.</p>
+                <p class="text-[10px] text-slate-500 mt-3 px-1 leading-normal">Escanea este código desde otro celular para abrir al instante la Tarjeta Digital en producción de Mega Express.</p>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Desvanecimiento controlado de la Splash Screen
+            // Cierre automático del Splash Screen
             setTimeout(() => {
                 const splash = document.getElementById('splash');
                 if(splash) {
@@ -254,7 +254,7 @@
                 }
             }, 1000);
 
-            // Controlador de Modales del Framework V2.0
+            // Controlador de Modales
             const setupAppModal = (triggerId, modalId) => {
                 const trigger = document.getElementById(triggerId);
                 const modal = document.getElementById(modalId);
@@ -265,8 +265,8 @@
                 modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
             };
 
-            // URL Oficial Obligatoria Normada por el Gobierno de Marca (2026)
-            const urlOficial = "https://konfiozinc.github.io/tarjetapre/";
+            // URL DE PRODUCCIÓN REAL ASIGNADA PARA MEGA EXPRESS
+            const urlRealProduccion = "https://konfiozinc.github.io/mega-express/";
 
             // Inicializar disparadores de navegación táctil
             setupAppModal('nav-services', 'modal-services');
@@ -275,11 +275,11 @@
             setupAppModal('nav-coverage', 'modal-coverage');
             setupAppModal('nav-qr', 'modal-qr');
 
-            // Generador de QR dinámico asociado a la URL maestra
+            // Generar el código QR asignando de forma estricta la URL de producción real
             const qrBox = document.getElementById("qrcode");
             if(qrBox) {
                 new QRCode(qrBox, {
-                    text: urlOficial,
+                    text: urlRealProduccion,
                     width: 144,
                     height: 144,
                     colorDark : "#1e3a8a",
@@ -288,12 +288,12 @@
                 });
             }
 
-            // Descarga automatizada de vCard nativa para Smartphones
+            // Descarga automatizada de vCard nativa apuntando a la URL final
             const btnVcard = document.getElementById('btn-vcard');
             if (btnVcard) {
                 btnVcard.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mega Express Internet\nORG:Mega Express Fibra Optica\nTEL;TYPE=CELL,VOICE;PREF=1:+573028589954\nTEL;TYPE=CELL,VOICE:+573217490310\nNOTE:Fibra Optica por $50.000 COP mensual. Aprobado para reportados y todas las nacionalidades sin estudio de credito.\nURL:${urlOficial}\nEND:VCARD`;
+                    const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mega Express Internet\nORG:Mega Express Fibra Optica\nTEL;TYPE=CELL,VOICE;PREF=1:+573028589954\nTEL;TYPE=CELL,VOICE:+573217490310\nNOTE:Fibra Optica por $50.000 COP mensual. Apto para reportados sin estudio de credito.\nURL:${urlRealProduccion}\nEND:VCARD`;
                     const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
