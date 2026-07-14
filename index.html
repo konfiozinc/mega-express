@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#1e40af"/>
     <title>Mega Express - Tarjeta Digital Profesional</title>
     
-    <!-- CSS y Fuentes de Alta Fidelidad -->
+    <!-- Tailwind CSS & Iconografía Premium -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +17,23 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in-up { opacity: 0; animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes subtlePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); box-shadow: 0 10px 25px rgba(30,64,175,0.4); } }
-        .pulse-cta { animation: subtlePulse 2s infinite ease-in-out; }
-        #splash { position: fixed; inset: 0; background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease; }
-        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); z-index: 50; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
+        .fade-in-up { opacity: 0; animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        
+        /* Efecto de Brillo Holográfico / Destello de Bordes (Wow Effect) */
+        @keyframes borderGlow {
+            0%, 100% { border-color: rgba(250, 204, 21, 0.4); box-shadow: 0 0 15px rgba(30, 64, 175, 0.3); }
+            50% { border-color: rgba(30, 64, 175, 0.8); box-shadow: 0 0 25px rgba(250, 204, 21, 0.5); }
+        }
+        .wow-profile { animation: borderGlow 4s infinite ease-in-out; }
+        
+        /* Efecto de pulso controlado para conversión del botón oficial de WhatsApp */
+        @keyframes whatsappPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 8px 20px -4px rgba(37, 211, 102, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 16px 30px -4px rgba(37, 211, 102, 0.7); }
+        }
+        .pulse-whatsapp { animation: whatsappPulse 2s infinite ease-in-out; }
+        
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 50; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-content { background: #ffffff; border-radius: 28px; width: 100%; max-w: 326px; transform: scale(0.96); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); border: 1px solid rgba(255,255,255,0.1); }
         .modal-overlay.active .modal-content { transform: scale(1); }
@@ -30,96 +42,96 @@
 </head>
 <body class="bg-slate-950 w-full flex justify-center items-center overflow-hidden">
 
-    <!-- 1. SPLASH SCREEN (Módulo Obligatorio 1) -->
+    <!-- 1. SPLASH SCREEN -->
     <div id="splash" class="flex flex-col items-center justify-center">
         <div class="text-center animate-pulse">
-            <div class="w-20 h-20 mx-auto bg-yellow-400 rounded-full flex items-center justify-center shadow-lg border-4 border-white mb-3">
-                <i class="fas fa-wifi text-3xl text-blue-900"></i>
+            <div class="w-24 h-24 mx-auto bg-gradient-to-tr from-yellow-400 to-amber-300 rounded-full flex items-center justify-center shadow-2xl border-4 border-white mb-3">
+                <i class="fas fa-wifi text-4xl text-blue-900"></i>
             </div>
             <h1 class="text-2xl font-black text-white tracking-wider">MEGA EXPRESS</h1>
-            <p class="text-yellow-300 text-[10px] font-bold uppercase tracking-widest mt-1">Conectividad Total</p>
+            <p class="text-yellow-300 text-[10px] font-bold uppercase tracking-widest mt-1">Fibra Óptica Real</p>
         </div>
     </div>
 
-    <!-- APP CONTAINER FIJO (ALTO DE PANTALLA EXCLUSIVO - ARQUITECTURA V2.0) -->
+    <!-- APP CONTAINER FIJO (ALTO DE PANTALLA CONTENIDO) -->
     <div class="app-container w-full max-w-[380px] bg-slate-900 relative flex flex-col justify-between overflow-hidden shadow-2xl">
         
         <!-- CUERPO DE LA APP -->
         <div class="flex-grow flex flex-col justify-between pb-24 overflow-y-auto">
             
             <!-- 2. PORTADA & HERO -->
-            <header class="relative bg-gradient-to-b from-blue-800 to-blue-950 pt-8 pb-12 px-5 text-center text-white rounded-b-[40px] shadow-lg flex-shrink-0 border-b border-blue-700/30">
-                <div class="absolute top-4 right-4 bg-yellow-400 text-blue-950 font-black px-2.5 py-1 rounded-full text-[9px] uppercase tracking-wider shadow-sm">
-                    Fibra Óptica
+            <header class="relative bg-gradient-to-b from-blue-800 via-blue-900 to-slate-900 pt-8 pb-12 px-5 text-center text-white rounded-b-[40px] shadow-2xl flex-shrink-0 border-b border-blue-500/20">
+                <div class="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-amber-400 text-blue-950 font-black px-3 py-1 rounded-full text-[9px] uppercase tracking-wider shadow-md">
+                    100% Simétrico
                 </div>
                 
-                <!-- Logo Corporativo Oficial -->
-                <div class="w-20 h-20 mx-auto bg-white rounded-full flex flex-col items-center justify-center shadow-md border-4 border-yellow-400 p-1 fade-in-up" style="animation-delay: 400ms;">
-                    <i class="fas fa-wifi text-3xl text-blue-800"></i>
-                    <span class="font-black text-[8px] text-blue-950 tracking-tighter mt-0.5">MEGA EXPRESS</span>
+                <!-- Logotipo Corporativo Aumentado y con Efecto Wow Dinámico -->
+                <div class="w-24 h-24 mx-auto bg-white rounded-full flex flex-col items-center justify-center border-4 wow-profile p-1.5 fade-in-up shadow-yellow-400/20" style="animation-delay: 300ms;">
+                    <i class="fas fa-wifi text-4xl text-blue-800 animate-pulse"></i>
+                    <span class="font-black text-[9px] text-blue-950 tracking-tighter mt-0.5">MEGA EXPRESS</span>
                 </div>
                 
-                <h1 class="text-2xl font-black text-white mt-3 tracking-tight fade-in-up" style="animation-delay: 500ms;">Mega Express</h1>
-                <p class="text-blue-300 font-medium text-xs uppercase tracking-widest mt-1 fade-in-up" style="animation-delay: 600ms;">Internet Residencial</p>
+                <h1 class="text-3xl font-black text-white mt-4 tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent fade-in-up" style="animation-delay: 400ms;">Mega Express</h1>
+                <p class="text-yellow-400 font-bold text-xs uppercase tracking-widest mt-1 fade-in-up" style="animation-delay: 500ms;"><i class="fas fa-bolt mr-1"></i> Fibra Óptica de Alta Velocidad</p>
                 
-                <!-- Bloque de Oferta Principal -->
-                <div class="mt-4 bg-slate-900/60 rounded-2xl p-3 border border-blue-500/20 backdrop-blur-md max-w-[220px] mx-auto fade-in-up" style="animation-delay: 700ms;">
-                    <p class="text-[9px] uppercase text-yellow-400 tracking-widest font-bold">Mensualidad Fija</p>
-                    <p class="text-2xl font-black text-white mt-0.5">$50.000 <span class="text-xs font-bold text-blue-300">COP</span></p>
+                <!-- Tarifa Comercial -->
+                <div class="mt-4 bg-slate-950/70 rounded-2xl p-3 border border-yellow-400/20 backdrop-blur-md max-w-[230px] mx-auto shadow-inner fade-in-up" style="animation-delay: 600ms;">
+                    <p class="text-[9px] uppercase text-blue-300 tracking-widest font-bold">Mensualidad Fija</p>
+                    <p class="text-3xl font-black text-yellow-400 mt-0.5">$50.000 <span class="text-xs font-bold text-white opacity-80">COP</span></p>
                 </div>
             </header>
 
-            <!-- CONTENIDO DE CONVERSIÓN CENTRAL -->
-            <div class="px-5 space-y-4 flex-grow flex flex-col justify-center mt-2">
+            <!-- CONTENIDO CENTRAL DE CONVERSIÓN -->
+            <div class="px-5 space-y-4 flex-grow flex flex-col justify-center mt-3">
                 
-                <!-- 3. BOTONES RÁPIDOS / ACCIÓN PRIMARIA -->
-                <div class="fade-in-up" style="animation-delay: 800ms;">
-                    <a href="https://wa.me/573028589954?text=Hola%20Mega%20Express,%20quiero%20solicitar%20el%20servicio%20de%20Internet%20Fibra%20Óptica%20de%20$50.000" target="_blank" class="w-full flex items-center justify-center bg-blue-600 text-white font-black py-4 px-4 rounded-xl pulse-cta text-center text-xs uppercase tracking-wider transition-colors hover:bg-blue-700">
-                        <i class="fab fa-whatsapp text-lg mr-2"></i>¡Solicitar Instalación Ya!
+                <!-- 3. BOTÓN PRINCIPAL ACTUALIZADO CON COLOR OFICIAL DE WHATSAPP (#25D366) -->
+                <div class="fade-in-up" style="animation-delay: 700ms;">
+                    <a href="https://wa.me/573028589954?text=Hola%20Mega%20Express,%20quiero%20solicitar%20el%20servicio%20de%20Internet%20Fibra%20Óptica%20de%20$50.000" target="_blank" class="w-full flex items-center justify-center bg-[#25D366] text-white font-black py-4 px-4 rounded-xl text-center text-sm uppercase tracking-wider transition-transform transform active:scale-95 shadow-lg shadow-green-500/20 pulse-whatsapp">
+                        <i class="fab fa-whatsapp text-2xl mr-2.5 text-white"></i>¡Contratar Servicio Ya!
                     </a>
                 </div>
 
-                <!-- ATRIBUTOS COMERCIALES COMPACTOS -->
-                <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 900ms;">
-                    <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
-                        <div class="w-7 h-7 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-400 text-xs flex-shrink-0"><i class="fas fa-bolt"></i></div>
+                <!-- CARACTERÍSTICAS COMERCIALES EN CRISTAL (Glassmorphism) -->
+                <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 800ms;">
+                    <div class="bg-slate-800/40 border border-slate-700/30 p-3 rounded-xl flex items-center gap-2.5 shadow-md">
+                        <div class="w-7 h-7 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-400 text-xs flex-shrink-0 shadow-inner"><i class="fas fa-network-wired"></i></div>
                         <span class="text-[10px] font-bold text-slate-300 leading-tight">Velocidad Simétrica</span>
                     </div>
-                    <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
-                        <div class="w-7 h-7 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-400 text-xs flex-shrink-0"><i class="fas fa-user-shield"></i></div>
+                    <div class="bg-slate-800/40 border border-slate-700/30 p-3 rounded-xl flex items-center gap-2.5 shadow-md">
+                        <div class="w-7 h-7 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-400 text-xs flex-shrink-0 shadow-inner"><i class="fas fa-user-shield"></i></div>
                         <span class="text-[10px] font-bold text-slate-300 leading-tight">Sin Estudio de Crédito</span>
                     </div>
-                    <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
-                        <div class="w-7 h-7 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-400 text-xs flex-shrink-0"><i class="fas fa-user-check"></i></div>
+                    <div class="bg-slate-800/40 border border-slate-700/30 p-3 rounded-xl flex items-center gap-2.5 shadow-md">
+                        <div class="w-7 h-7 bg-blue-50/10 rounded-lg flex items-center justify-center text-blue-400 text-xs flex-shrink-0 shadow-inner"><i class="fas fa-user-check"></i></div>
                         <span class="text-[10px] font-bold text-slate-300 leading-tight">Apto para Reportados</span>
                     </div>
-                    <div class="bg-slate-800/50 border border-slate-700/40 p-3 rounded-xl flex items-center gap-2.5">
-                        <div class="w-7 h-7 bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-400 text-xs flex-shrink-0"><i class="fas fa-globe"></i></div>
+                    <div class="bg-slate-800/40 border border-slate-700/30 p-3 rounded-xl flex items-center gap-2.5 shadow-md">
+                        <div class="w-7 h-7 bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-400 text-xs flex-shrink-0 shadow-inner"><i class="fas fa-globe"></i></div>
                         <span class="text-[10px] font-bold text-slate-300 leading-tight">Cualquier Nacionalidad</span>
                     </div>
                 </div>
 
-                <!-- ENLACES TELEFÓNICOS NATIVOS -->
-                <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 1000ms;">
-                    <a href="tel:+573028589954" class="bg-slate-800 border border-slate-700 py-3 px-3 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold text-slate-300 transition-colors hover:bg-slate-750">
-                        <i class="fas fa-phone text-blue-400"></i> Línea Ventas 1
+                <!-- ENLACES TELEFÓNICOS DIRECTOS -->
+                <div class="grid grid-cols-2 gap-2 fade-in-up" style="animation-delay: 900ms;">
+                    <a href="tel:+573028589954" class="bg-slate-800/80 border border-slate-700/60 py-3 px-3 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold text-slate-300 transition-colors hover:bg-slate-700">
+                        <i class="fas fa-phone text-blue-400 animate-pulse"></i> Línea Ventas 1
                     </a>
-                    <a href="tel:+573217490310" class="bg-slate-800 border border-slate-700 py-3 px-3 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold text-slate-300 transition-colors hover:bg-slate-750">
-                        <i class="fas fa-phone-alt text-blue-400"></i> Línea Ventas 2
+                    <a href="tel:+573217490310" class="bg-slate-800/80 border border-slate-700/60 py-3 px-3 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold text-slate-300 transition-colors hover:bg-slate-700">
+                        <i class="fas fa-phone-alt text-blue-400 animate-pulse"></i> Línea Ventas 2
                     </a>
                 </div>
             </div>
             
-            <!-- ACCIÓN DE GUARDADO DE CONTACTO -->
-            <div class="px-5 mt-auto pt-4 fade-in-up" style="animation-delay: 1100ms;">
-                <button id="btn-vcard" class="w-full bg-slate-800 border border-slate-700 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
-                    <i class="fas fa-user-plus text-yellow-400"></i> Descargar Contacto a Agenda
+            <!-- ACCIÓN DE GUARDADO VCARD ACTUALIZADA A PRODUCCIÓN -->
+            <div class="px-5 mt-auto pt-4 fade-in-up" style="animation-delay: 1000ms;">
+                <button id="btn-vcard" class="w-full bg-blue-800 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider border border-blue-600 shadow-md">
+                    <i class="fas fa-user-plus text-yellow-400"></i> Guardar Contacto de Ventas
                 </button>
             </div>
         </div>
 
-        <!-- 12. BARRA DE NAVEGACIÓN INFERIOR (TAB BAR FIJO) -->
-        <nav class="absolute bottom-0 inset-x-0 bg-slate-900 border-t border-slate-800 px-2 py-2.5 flex justify-around items-center z-20 shadow-2xl">
+        <!-- 12. BARRA DE NAVEGACIÓN INFERIOR -->
+        <nav class="absolute bottom-0 inset-x-0 bg-slate-950 border-t border-slate-800 px-2 py-2.5 flex justify-around items-center z-20 shadow-2xl">
             <button id="nav-services" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
                 <i class="fas fa-list-check text-base"></i>
                 <span class="text-[9px] font-semibold mt-1">Servicios</span>
@@ -143,9 +155,9 @@
         </nav>
     </div>
 
-    <!-- ================= MODALES DEL DESIGN SYSTEM ================= -->
+    <!-- ================= MODALES DEL DESIGN SYSTEM CONFIGURADOS A PRODUCCIÓN ================= -->
 
-    <!-- 5. MODAL DE SERVICIOS -->
+    <!-- MODAL DE SERVICIOS -->
     <div id="modal-services" class="modal-overlay">
         <div class="modal-content overflow-hidden">
             <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
@@ -155,18 +167,18 @@
             <div class="p-4 max-h-[60vh] overflow-y-auto space-y-3 text-slate-800">
                 <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
                     <h4 class="font-bold text-blue-900 text-xs uppercase">Plan Único Fibra Óptica</h4>
-                    <p class="text-[11px] text-slate-600 mt-1 leading-normal">Internet ilimitado de alta fidelidad, ideal para conectar smartphones, Smart TVs, consolas y computadores en simultáneo sin pérdida de velocidad.</p>
+                    <p class="text-[11px] text-slate-600 mt-1 leading-normal">Internet ilimitado simétrico ideal para conectar smartphones, Smart TVs, consolas y computadores en simultáneo sin pérdida de velocidad en el hogar.</p>
                     <p class="text-xs font-black text-blue-800 mt-2">$50.000 COP al mes</p>
                 </div>
                 <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                    <h4 class="font-bold text-blue-900 text-xs uppercase">Instalación Inmediata</h4>
-                    <p class="text-[11px] text-slate-600 mt-1 leading-normal">Agendamiento de cuadrilla técnica prioritaria. Sin revisiones ni firmas burocráticas complejas.</p>
+                    <h4 class="font-bold text-blue-900 text-xs uppercase">Instalación sin Burocracia</h4>
+                    <p class="text-[11px] text-slate-600 mt-1 leading-normal">Agendamiento prioritario para instalación en tu zona residencial. Sin trámites complejos ni contratos de permanencia amarrados.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 6 y 7. MODAL DE GALERÍA Y VIDEOS -->
+    <!-- MODAL DE GALERÍA -->
     <div id="modal-gallery" class="modal-overlay">
         <div class="modal-content overflow-hidden">
             <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
@@ -176,7 +188,7 @@
             <div class="p-4 space-y-3">
                 <div class="rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
                     <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=400" alt="Fibra Óptica" class="w-full h-32 object-cover">
-                    <p class="text-[10px] p-2 text-slate-600 text-center font-medium">Cableado e infraestructura de última generación para garantizar estabilidad.</p>
+                    <p class="text-[10px] p-2 text-slate-600 text-center font-medium">Cableado de fibra e infraestructura moderna para asegurar estabilidad permanente.</p>
                 </div>
                 <div class="bg-slate-950 rounded-xl overflow-hidden h-28 relative flex items-center justify-center border shadow-inner">
                     <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=400" class="absolute inset-0 w-full h-full object-cover opacity-40" alt="Video">
@@ -188,7 +200,7 @@
         </div>
     </div>
 
-    <!-- 8. MODAL DE TESTIMONIOS -->
+    <!-- MODAL DE TESTIMONIOS -->
     <div id="modal-testimonials" class="modal-overlay">
         <div class="modal-content overflow-hidden">
             <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
@@ -199,53 +211,53 @@
                 <div class="bg-blue-50/50 p-3 rounded-xl border border-blue-100">
                     <div class="text-yellow-500 text-[9px] mb-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="text-[11px] text-slate-700 italic leading-relaxed">"Excelente internet. Estaba reportado en DataCrédito y no me pusieron ningún problema, me instalaron al día siguiente."</p>
-                    <p class="text-[9px] font-bold text-blue-900 text-right mt-1.5">— Carlos M., Usuario Conectado</p>
+                    <p class="text-[9px] font-bold text-blue-800 text-right mt-1.5">— Carlos M., Usuario Conectado</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 9 y 10. MODAL DE COBERTURA E INFORMACIÓN -->
+    <!-- MODAL DE COBERTURA -->
     <div id="modal-coverage" class="modal-overlay">
         <div class="modal-content overflow-hidden">
             <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
-                <span><i class="fas fa-map-location-dot mr-2"></i>Zonas e Información</span>
+                <span><i class="fas fa-map-location-dot mr-2"></i>Zonas de Cobertura</span>
                 <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
             </div>
             <div class="p-4 space-y-3 text-slate-800 text-[11px]">
                 <div class="p-3 bg-slate-50 rounded-xl border flex items-start gap-2.5">
                     <i class="fas fa-map-pin text-blue-700 text-sm mt-0.5"></i>
                     <div>
-                        <h5 class="font-bold text-slate-800">Disponibilidad Residencial</h5>
-                        <p class="text-[10px] text-slate-500 mt-0.5">Escríbenos directamente para validar la factibilidad en tu dirección exacta.</p>
+                        <h5 class="font-bold text-slate-800">Disponibilidad Inmediata</h5>
+                        <p class="text-[10px] text-slate-500 mt-0.5">Envíanos tu ubicación exacta por WhatsApp para validar cobertura técnica residencial.</p>
                     </div>
                 </div>
                 <div class="p-3 bg-slate-50 rounded-xl border space-y-1.5 font-medium">
-                    <div class="flex justify-between border-b pb-1"><span>Mensualidad:</span><span class="font-bold text-slate-900">$50.000 COP</span></div>
-                    <div class="flex justify-between border-b pb-1"><span>Atención:</span><span class="text-slate-900">Lunes a Sábado</span></div>
-                    <div class="flex justify-between"><span>Papeleo:</span><span class="text-slate-900">Sin estudio de crédito</span></div>
+                    <div class="flex justify-between border-b pb-1"><span>Mensualidad Fija:</span><span class="font-bold text-slate-900">$50.000 COP</span></div>
+                    <div class="flex justify-between border-b pb-1"><span>Ventas y Soporte:</span><span class="text-slate-900">Lunes a Sábado</span></div>
+                    <div class="flex justify-between"><span>Centrales de Riesgo:</span><span class="text-slate-900 font-bold text-emerald-600">No se revisan</span></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 11. MODAL DE CÓDIGO QR REAL -->
+    <!-- MODAL DE CÓDIGO QR REAL (APUNTA A PRODUCCIÓN MEGA EXPRESS) -->
     <div id="modal-qr" class="modal-overlay">
         <div class="modal-content overflow-hidden">
             <div class="bg-blue-800 text-white p-4 font-bold text-xs uppercase tracking-wider flex justify-between items-center">
-                <span><i class="fas fa-qrcode mr-2"></i>Compartir Tarjeta</span>
+                <span><i class="fas fa-qrcode mr-2"></i>Compartir Perfil</span>
                 <button class="close-modal text-lg font-bold px-2 text-white/80 hover:text-white">&times;</button>
             </div>
             <div class="p-5 text-center">
                 <div id="qrcode" class="flex justify-center p-2.5 bg-white border border-slate-200 rounded-xl inline-block mx-auto shadow-sm"></div>
-                <p class="text-[10px] text-slate-500 mt-3 px-1 leading-normal">Escanea este código desde otro celular para abrir al instante la Tarjeta Digital en producción de Mega Express.</p>
+                <p class="text-[10px] text-slate-500 mt-3 px-1 leading-normal">Escanea este código desde otro celular para abrir al instante la Tarjeta Digital Profesional de Mega Express en producción.</p>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Cierre automático del Splash Screen
+            // Desvanecimiento del Splash Screen
             setTimeout(() => {
                 const splash = document.getElementById('splash');
                 if(splash) {
@@ -254,7 +266,7 @@
                 }
             }, 1000);
 
-            // Controlador de Modales
+            // Controlador de Modales Modular
             const setupAppModal = (triggerId, modalId) => {
                 const trigger = document.getElementById(triggerId);
                 const modal = document.getElementById(modalId);
@@ -265,17 +277,17 @@
                 modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
             };
 
-            // URL DE PRODUCCIÓN REAL ASIGNADA PARA MEGA EXPRESS
+            // URL DE PRODUCCIÓN REAL Y EXCLUSIVA PARA EL CLIENTE
             const urlRealProduccion = "https://konfiozinc.github.io/mega-express/";
 
-            // Inicializar disparadores de navegación táctil
+            // Inicializar disparadores táctiles de la barra de navegación
             setupAppModal('nav-services', 'modal-services');
             setupAppModal('nav-gallery', 'modal-gallery');
             setupAppModal('nav-testimonials', 'modal-testimonials');
             setupAppModal('nav-coverage', 'modal-coverage');
             setupAppModal('nav-qr', 'modal-qr');
 
-            // Generar el código QR asignando de forma estricta la URL de producción real
+            // Generador de QR real apuntando al dominio del cliente
             const qrBox = document.getElementById("qrcode");
             if(qrBox) {
                 new QRCode(qrBox, {
@@ -288,17 +300,17 @@
                 });
             }
 
-            // Descarga automatizada de vCard nativa apuntando a la URL final
+            // Descarga de tarjeta vCard corporativa real
             const btnVcard = document.getElementById('btn-vcard');
             if (btnVcard) {
                 btnVcard.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mega Express Internet\nORG:Mega Express Fibra Optica\nTEL;TYPE=CELL,VOICE;PREF=1:+573028589954\nTEL;TYPE=CELL,VOICE:+573217490310\nNOTE:Fibra Optica por $50.000 COP mensual. Apto para reportados sin estudio de credito.\nURL:${urlRealProduccion}\nEND:VCARD`;
+                    const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mega Express Internet\nORG:Mega Express Fibra Optica\nTEL;TYPE=CELL,VOICE;PREF=1:+573028589954\nTEL;TYPE=CELL,VOICE:+573217490310\nNOTE:Fibra Optica por $50.000 COP mensual. Apto para reportados y todas las nacionalidades sin estudio de credito.\nURL:${urlRealProduccion}\nEND:VCARD`;
                     const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = url;
-                    link.download = 'Mega_Express.vcf';
+                    link.download = 'Mega_Express_Ventas.vcf';
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
