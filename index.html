@@ -47,10 +47,10 @@
     </div>
 
     <!-- APP CONTAINER FIJO (ALTO DE PANTALLA CONTENIDO - SIN SCROLL WEB) -->
-    <div class="app-container w-full max-w-[380px] bg-slate-900 relative flex flex-col justify-between overflow-hidden shadow-2xl">
+    <div class="app-container w-full max-w-[380px] bg-slate-900 relative flex flex-col justify-between overflow-hidden shadow-2xl border border-white/5">
         
         <!-- CUERPO DE LA APP -->
-        <div class="flex-grow flex flex-col justify-between pb-24 overflow-y-auto">
+        <div class="flex-grow flex flex-col justify-between pb-28 overflow-y-auto">
             
             <!-- 2. PORTADA & HERO OFICIAL DE LA PRIMERA ENTREGA (RESTAURADA Y ASEGURADA) -->
             <header class="relative bg-gradient-to-b from-blue-800 to-blue-950 pt-6 pb-10 px-5 text-center text-white rounded-b-[40px] shadow-lg flex-shrink-0 border-b border-blue-700/30">
@@ -59,7 +59,7 @@
                 </div>
                 
                 <!-- EL LOGO DE LA PRIMERA ENTREGA CORREGIDO CON SVG VECTORIAL INLINE (SIEMPRE VISIBLE) -->
-                <div class="w-24 h-24 mx-auto bg-white rounded-full flex flex-col items-center justify-center shadow-xl border-4 border-yellow-400 p-2 fade-in-up" style="animation-delay: 100ms;">
+                <div class="w-24 h-24 mx-auto bg-white rounded-full flex flex-col items-center justify-center shadow-xl border-4 border-yellow-400 p-2 " style="animation-delay: 100ms;">
                     <!-- SVG nativo para asegurar renderizado del icono Wi-Fi sin depender de archivos externos -->
                     <svg class="w-12 h-12 text-blue-800" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 21a2 2 0 1 1-2-2 2 2 0 0 1 2 2zm0-5.5a5.5 5.5 0 0 0-5.5 5.5.75.75 0 0 1-1.5 0 7 7 0 0 1 14 0 .75.75 0 0 1-1.5 0 5.5 5.5 0 0 0-5.5-5.5zm0-5a10.5 10.5 0 0 0-10.5 10.5.75.75 0 0 1-1.5 0 12 12 0 0 1 24 0 .75.75 0 0 1-1.5 0A10.5 10.5 0 0 0 12 10.5z"/>
@@ -124,34 +124,37 @@
                     <i class="fas fa-user-plus text-yellow-400"></i> GUARDAR CONTACTO DE VENTAS
                 </button>
             </div>
-
-            <!-- 12. PIE DE TARJETA — regla fija KONFÍO ZINC, siempre visible -->
-            <p class="text-center text-slate-500 text-[9px] mt-4 px-5 tracking-wide">Creado por KONFÍO ZINC — Todos los derechos reservados</p>
         </div>
 
-        <!-- 12. BARRA DE NAVEGACIÓN INFERIOR (ESTILO APP FIJA) -->
-        <nav class="absolute bottom-0 inset-x-0 bg-slate-950 border-t border-slate-800 px-2 py-2.5 flex justify-around items-center z-20 shadow-2xl">
-            <button id="nav-services" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
-                <i class="fas fa-list-check text-base"></i>
-                <span class="text-[9px] font-semibold mt-1">Servicios</span>
-            </button>
-            <button id="nav-gallery" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
-                <i class="fas fa-images text-base"></i>
-                <span class="text-[9px] font-semibold mt-1">Evidencia</span>
-            </button>
-            <button id="nav-testimonials" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
-                <i class="fas fa-comment-dots text-base"></i>
-                <span class="text-[9px] font-semibold mt-1">Opiniones</span>
-            </button>
-            <button id="nav-coverage" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
-                <i class="fas fa-map-location-dot text-base"></i>
-                <span class="text-[9px] font-semibold mt-1">Zonas</span>
-            </button>
-            <button id="nav-qr" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
-                <i class="fas fa-qrcode text-base"></i>
-                <span class="text-[9px] font-semibold mt-1">QR</span>
-            </button>
-        </nav>
+        <!-- 4 y 12. BARRA DE NAVEGACIÓN INFERIOR CON TU SELLO INSTITUCIONAL INYECTADO -->
+        <div class="absolute bottom-0 inset-x-0 bg-slate-950 border-t border-slate-800 z-20 flex flex-col shadow-2xl">
+            <nav class="px-2 py-2.5 flex justify-around items-center">
+                <button id="nav-services" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                    <i class="fas fa-list-check text-base"></i>
+                    <span class="text-[9px] font-semibold mt-1">Servicios</span>
+                </button>
+                <button id="nav-gallery" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                    <i class="fas fa-images text-base"></i>
+                    <span class="text-[9px] font-semibold mt-1">Evidencia</span>
+                </button>
+                <button id="nav-testimonials" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                    <i class="fas fa-comment-dots text-base"></i>
+                    <span class="text-[9px] font-semibold mt-1">Opiniones</span>
+                </button>
+                <button id="nav-coverage" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                    <i class="fas fa-map-location-dot text-base"></i>
+                    <span class="text-[9px] font-semibold mt-1">Zonas</span>
+                </button>
+                <button id="nav-qr" class="flex flex-col items-center justify-center text-slate-400 hover:text-blue-500 w-12 transition-colors">
+                    <i class="fas fa-qrcode text-base"></i>
+                    <span class="text-[9px] font-semibold mt-1">QR</span>
+                </button>
+            </nav>
+            <!-- SELLO OFICIAL DE MARCA MANDATORIO V2.0 -->
+            <div class="text-center text-[8px] tracking-wider text-slate-600 font-medium bg-slate-950 pb-1.5 uppercase">
+                Creado por KONFÍO ZINC — Todos los derechos reservados
+            </div>
+        </div>
     </div>
 
     <!-- ================= MODALES INTERACTIVOS ================= -->
