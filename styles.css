@@ -238,6 +238,39 @@
       background:var(--c-surface-alt); color:var(--c-primary); font-size:12.5px; font-weight:600; border:1px solid #e2e8f0;
     }
 
+    /* Planes — rejilla de 2 columnas; el destacado lleva borde amarillo */
+    .planes{padding:var(--space-4) var(--space-5) 0;}
+    .planes-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:var(--space-2);}
+    .plan-card{
+      position:relative; display:flex; flex-direction:column;
+      background:var(--c-surface); border:1px solid #e2e8f0;
+      border-radius:var(--radius-md); padding:13px 12px;
+    }
+    .plan-card--destacado{border:2px solid var(--c-secondary); background:var(--c-accent); box-shadow:var(--shadow-sm);}
+    .plan-card--ancho{grid-column:1 / -1; flex-direction:row; align-items:center; gap:14px;}
+    .plan-card--ancho .plan-cuerpo{flex:1;}
+    .plan-card--ancho .plan-btn{margin-top:0; flex:none;}
+    .plan-badge{
+      position:absolute; top:-9px; right:10px;
+      background:var(--c-secondary); color:var(--c-primary);
+      font-size:9px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+      padding:3px 9px; border-radius:var(--radius-full);
+    }
+    .plan-cuerpo{flex:1;}
+    .plan-nombre{font-family:var(--font-display); font-size:13px; font-weight:800; color:var(--c-primary);}
+    .plan-velocidad{font-size:11px; font-weight:600; color:var(--c-text-mute); margin-top:1px;}
+    .plan-precio{font-family:var(--font-display); font-size:18px; font-weight:800; color:var(--c-text); margin-top:5px; line-height:1.1;}
+    .plan-precio small{font-size:10.5px; font-weight:600; color:var(--c-text-mute);}
+    .plan-desc{font-size:10.5px; color:var(--c-text-mute); line-height:1.45; margin-top:5px;}
+    .plan-btn{
+      display:flex; align-items:center; justify-content:center; gap:6px;
+      margin-top:10px; padding:9px 8px; border-radius:var(--radius-sm);
+      background:#25D366; color:#fff; font-weight:700; font-size:11.5px;
+      transition:transform var(--dur-fast) var(--ease);
+    }
+    .plan-btn:active{transform:scale(.97);}
+    .planes-nota{font-size:11.5px; color:var(--c-text-mute); margin-top:var(--space-3);}
+
     /* Pie de tarjeta */
     .pie-links{margin-top:6px; font-size:10.5px; opacity:.9;}
     .pie-links a{color:var(--c-secondary);}

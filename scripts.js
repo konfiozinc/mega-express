@@ -7,10 +7,12 @@
 
 const CONFIG = {
   cliente: {
-    nombre: "Mega Express",
-    nombreCompleto: "Mega Express",
-    profesion: "Internet Fibra Óptica · Plan Único",
-    tagline: "Fibra óptica simétrica por $50.000 COP/mes, sin estudio de crédito",
+    nombre: "Mega Express Soluciones",
+    // Nombre legal confirmado por el cliente: MEGA EXPRESS soluciones s.a.s.
+    // Se usa en la ficha de contacto (vCard) y en los datos estructurados.
+    nombreCompleto: "Mega Express Soluciones",
+    profesion: "Internet Fibra Óptica · Planes desde $50.000",
+    tagline: "Fibra óptica simétrica con 5 planes desde $50.000 COP/mes. Sin estudio de crédito, apto para reportados y para cualquier nacionalidad.",
     disponible: true,
     verificado: true
   },
@@ -20,11 +22,11 @@ const CONFIG = {
     accent:   "#eff6ff"
   },
   contacto: {
-    telefonoDisplay: "+57 302 858 9954",
-    telefonoE164: "+573028589954",
-    whatsapp: "573028589954",
-    mensajeWhatsapp: "Hola Mega Express, quiero solicitar el servicio de Internet Fibra Óptica de $50.000.",
-    email: ""
+    telefonoDisplay: "+57 300 7098778",
+    telefonoE164: "+573007098778",
+    whatsapp: "573007098778",
+    mensajeWhatsapp: "Hola, quiero información sobre el internet de Mega Express",
+    email: "megaexpres83@gmail.com"
   },
   urlTarjeta: window.location.href,
 
@@ -35,11 +37,25 @@ const CONFIG = {
     tiktok: ""
   },
 
+  /* Los 4 diferenciadores del servicio. No son planes: los planes van en `planes`. */
   servicios: [
-    { icono:"fa-solid fa-arrows-left-right", nombre:"Velocidad Simétrica", descripcion:"Misma velocidad de subida y bajada para todos tus dispositivos.", precio:"$50.000 COP/mes" },
+    { icono:"fa-solid fa-arrows-left-right", nombre:"Velocidad Simétrica", descripcion:"Misma velocidad de subida y bajada para todos tus dispositivos.", precio:"" },
     { icono:"fa-solid fa-shield-halved", nombre:"Sin Estudio Crédito", descripcion:"Instalación sin trámites ni revisión de centrales de riesgo.", precio:"" },
     { icono:"fa-solid fa-user-check", nombre:"Apto Reportados", descripcion:"Aunque estés reportado en DataCrédito, podemos instalarte.", precio:"" },
     { icono:"fa-solid fa-earth-americas", nombre:"Cualquier Nacionalidad", descripcion:"Servicio disponible para todas las nacionalidades.", precio:"" }
+  ],
+
+  /* ── Planes ──────────────────────────────────────────────────────
+     Mismos planes y precios del servicio (verificados contra el sitio
+     en vivo del proveedor el 13-oct-2026). El "Familiar" va destacado,
+     igual que en el sitio del proveedor: guía al cliente a un plan medio.
+     El botón de cada plan abre WhatsApp con el nombre del plan. */
+  planes: [
+    { id:"basico",  nombre:"Básico",   velocidad:"100 Mbps", precio:50000,  descripcion:"Navegar, redes sociales y streaming en HD." },
+    { id:"familiar",nombre:"Familiar", velocidad:"150 Mbps", precio:60000,  descripcion:"Para hogares con varios dispositivos conectados.", destacado:true },
+    { id:"plus",    nombre:"Plus",     velocidad:"200 Mbps", precio:70000,  descripcion:"Teletrabajo, estudio y streaming 4K sin interrupciones." },
+    { id:"premium", nombre:"Premium",  velocidad:"250 Mbps", precio:85000,  descripcion:"Más velocidad para jugar y descargar sin límites." },
+    { id:"ultra",   nombre:"Ultra",    velocidad:"300 Mbps", precio:100000, descripcion:"Máxima velocidad para hogares exigentes." }
   ],
 
   /* No hay fotos reales de instalaciones aún: se muestran láminas "Foto pendiente". */
@@ -52,13 +68,13 @@ const CONFIG = {
 
   informacion: {
     horarios: [
-      { dias: "Atención", horas: "Disponibilidad inmediata" },
-      { dias: "Validación de cobertura", horas: "Por WhatsApp" }
+      { dias: "Lunes a viernes", horas: "09:00 – 17:00" },
+      { dias: "Sábado", horas: "09:00 – 15:00" },
+      { dias: "Domingo", horas: "Cerrado" }
     ],
-    direccion: "",
+    direccion: "Calle 64 AB #105 A 93, Santa Margarita",
     telefonos: [
-      { label: "Línea Ventas 1", numero: "+573028589954", display: "+57 302 858 9954" },
-      { label: "Línea Ventas 2", numero: "+573217490310", display: "+57 321 749 0310" }
+      { label: "Línea de ventas", numero: "+573007098778", display: "+57 300 7098778" }
     ]
   }
 };
@@ -80,6 +96,37 @@ const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>
         <div class="servicio-cuerpo"><h3>${esc(s.nombre)}</h3><p>${esc(s.descripcion)}</p>${precio}</div>
       </div>`);
   });
+
+  /* ── Planes: rejilla de 2 columnas, el último a todo el ancho.
+        Cada plan abre WhatsApp con SU nombre en el mensaje, para que quien
+        atiende sepa de una qué plan quiere el cliente. El plan destacado
+        lleva borde amarillo y la etiqueta "Recomendado". ── */
+  const rejillaPlanes = $('#planes-grid');
+  if (rejillaPlanes) {
+    const ultimo = CONFIG.planes.length - 1;
+    CONFIG.planes.forEach((p, i) => {
+      const precio = '$' + p.precio.toLocaleString('es-CO');
+      const texto = `Hola, quiero contratar el plan ${p.nombre} de Mega Express`;
+      const clases = 'plan-card'
+        + (p.destacado ? ' plan-card--destacado' : '')
+        + (i === ultimo ? ' plan-card--ancho' : '');
+      rejillaPlanes.insertAdjacentHTML('beforeend', `
+        <article class="${clases}">
+          ${p.destacado ? '<span class="plan-badge">Recomendado</span>' : ''}
+          <div class="plan-cuerpo">
+            <div class="plan-nombre">${esc(p.nombre)}</div>
+            <div class="plan-velocidad">${esc(p.velocidad)}</div>
+            <div class="plan-precio">${precio}<small> /mes</small></div>
+            <p class="plan-desc">${esc(p.descripcion)}</p>
+          </div>
+          <a class="plan-btn" href="https://wa.me/${esc(CONFIG.contacto.whatsapp)}?text=${encodeURIComponent(texto)}"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Contratar por WhatsApp el plan ${esc(p.nombre)} de ${esc(p.velocidad)}">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Contratar
+          </a>
+        </article>`);
+    });
+  }
 
   /* ── Galería: fotos reales + láminas "Foto pendiente" ── */
   const wrapper = $('#swiper-wrapper');
