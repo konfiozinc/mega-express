@@ -82,21 +82,6 @@
   }
   </script>
 
-  <!-- Analytics (GA4): pega el ID real reemplazando G-0JKTZNMPWX) -->
-  <script>
-  const GA_ID = 'G-0JKTZNMPWX';
-  if (GA_ID && !/^G-XXXX/.test(GA_ID)) {
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', GA_ID);
-  }
-  </script>
-
   <!-- Fuentes e Iconografía Oficiales -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
